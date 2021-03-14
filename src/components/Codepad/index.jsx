@@ -47,9 +47,6 @@ const Component = (props) => {
     firepad.on('ready', () => {
       props.onChange && props.onChange(firepad.getText());
     });
-    firepad.on('synced', function (isSynced) {
-      props.onChange && props.onChange(firepad.getText());
-    });
     window.firepad = firepad;
   }
 
