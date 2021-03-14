@@ -8,7 +8,7 @@ const Component = () => {
 
   useEffect(() => {
     if (name) {
-      window.firepad.setUserId(name);
+      window.Firepad.setUserId(name);
     }
   }, []);
 
@@ -42,7 +42,7 @@ const Component = () => {
                 onClick={() => {
                   setModal(false);
                   setLsName(name);
-                  window.firepad.setUserId(name);
+                  window.Firepad.setUserId(name);
                 }}
               >
                 Join!

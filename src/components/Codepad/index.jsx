@@ -1,12 +1,9 @@
 import { useEffect, useRef } from 'react';
-
-import Firepad from 'firepad/dist/firepad.min.js';
-
 import { getSessionRef } from '../../utils/firebase';
-
 import './style.css';
 
 const CodeMirror = window.CodeMirror;
+const Firepad = window.Firepad;
 
 const Component = (props) => {
   const { className = '' } = props;
@@ -53,7 +50,6 @@ const Component = (props) => {
     firepad.on('synced', function (isSynced) {
       props.onChange && props.onChange(firepad.getText());
     });
-    window.firepad = firepad;
   }
 
   return (
