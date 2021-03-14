@@ -8,9 +8,9 @@ const Component = () => {
 
   useEffect(() => {
     if (name) {
-      window.Firepad.setUserId(name);
+      window.firepad.setUserId(name);
     }
-  }, []);
+  });
 
   const toggle = () => setModal(!modal);
   return (
@@ -42,7 +42,7 @@ const Component = () => {
                 onClick={() => {
                   setModal(false);
                   setLsName(name);
-                  window.Firepad.setUserId(name);
+                  window.firepad.setUserId(name);
                 }}
               >
                 Join!

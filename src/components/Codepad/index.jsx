@@ -12,7 +12,7 @@ const Component = (props) => {
 
   useEffect(() => {
     init();
-  }, []);
+  });
 
   function init() {
     const sel = document.getElementById('firepad-container');
@@ -50,6 +50,7 @@ const Component = (props) => {
     firepad.on('synced', function (isSynced) {
       props.onChange && props.onChange(firepad.getText());
     });
+    window.firepad = firepad;
   }
 
   return (
