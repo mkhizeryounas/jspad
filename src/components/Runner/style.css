@@ -1,0 +1,8 @@
+.runner {
+  position: relative;
+  z-index: 3;
+  bottom: 45px;
+  left: 15px;
+  width: 100%;
+  height: 0;
+}

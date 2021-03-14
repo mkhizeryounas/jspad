@@ -1,0 +1,14 @@
+.App div:nth-child(1) {
+  display: flex;
+}
+
+.gutter-horizontal {
+  cursor: col-resize !important;
+  background-color: #222;
+  transition: 0.5s;
+}
+
+.gutter-horizontal:hover {
+  background-color: #eee;
+  transition: 0.5s;
+}
