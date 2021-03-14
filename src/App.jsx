@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import Split from 'react-split';
 
@@ -12,7 +12,9 @@ import './App.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
 const App = () => {
-  const [script, setScript] = useState('console.log("hello world");');
+  const [script, setScript] = useState(
+    '// JavaScript Editing with Pushgun!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}\ngo();'
+  );
   const [output, setOutput] = useState(null);
 
   const fb = getSessionRef().child('output');

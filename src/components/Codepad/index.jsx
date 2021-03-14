@@ -1,6 +1,7 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
-import Firepad from 'firepad';
+import Firepad from 'firepad/dist/firepad.min.js';
+
 import { getSessionRef } from '../../utils/firebase';
 
 import './style.css';
@@ -44,10 +45,12 @@ const Component = (props) => {
     });
 
     firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-      defaultText:
-        '// JavaScript Editing with Pushgun!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}',
+      defaultText: props.value,
     });
     firepad.on('ready', () => {
+      props.onChange && props.onChange(firepad.getText());
+    });
+    firepad.on('synced', function (isSynced) {
       props.onChange && props.onChange(firepad.getText());
     });
     window.firepad = firepad;
