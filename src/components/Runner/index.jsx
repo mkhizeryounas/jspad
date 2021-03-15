@@ -84,14 +84,14 @@ const Component = (props) => {
 
       <div className='col-auto'>
         <tt className='text-light'>
-          <i className='fa fa-rocket'></i> Powered by{' '}
           <a
-            href='https://pushgun.com'
-            className='text-success'
-            rel='noreferrer'
-            target='_blank'
+            className='github-button'
+            href='https://github.com/mkhizeryounas/jspad'
+            data-icon='octicon-star'
+            data-show-count='true'
+            aria-label='Star mkhizeryounas/jspad on GitHub'
           >
-            Pushgun
+            Star
           </a>
         </tt>
       </div>
