@@ -61,7 +61,7 @@ const Component = (props) => {
           )}
         </button>
         <button
-          className='btn btn-secondary ml-2'
+          className='btn btn-secondary ml-2 btn-sm'
           onClick={() => {
             copy(window.location.href);
             addToast('Copied to clipboard', {
