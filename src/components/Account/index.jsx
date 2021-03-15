@@ -10,7 +10,7 @@ const Component = () => {
     if (name) {
       window.firepad.setUserId(name);
     }
-  });
+  }, []);
 
   const toggle = () => setModal(!modal);
   return (

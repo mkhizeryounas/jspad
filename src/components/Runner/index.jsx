@@ -24,9 +24,7 @@ const Component = (props) => {
             .join(' ')
         );
       };
-      const EVAL_IS_BAD__AVOID_THIS = eval;
-      EVAL_IS_BAD__AVOID_THIS(script);
-
+      new Function(script)();
       output['stdout'] = response;
     } catch (err) {
       output['stdout'] = [err.message || err];
