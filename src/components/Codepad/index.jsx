@@ -12,7 +12,7 @@ const Component = (props) => {
 
   useEffect(() => {
     init();
-  }, []);
+  });
 
   function init() {
     const sel = document.getElementById('firepad-container');
