@@ -6,3 +6,9 @@
   width: 100%;
   height: 0;
 }
+
+@media only screen and (max-width: 600px) {
+  .runner {
+    position: absolute;
+  }
+}

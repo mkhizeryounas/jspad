@@ -74,7 +74,6 @@ const Component = (props) => {
           <i className='fa fa-share'></i>
         </button>
       </div>
-      <div className='col'></div>
 
       <div className='col-auto'>
         <tt className='text-light'>
