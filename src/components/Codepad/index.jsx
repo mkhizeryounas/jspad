@@ -20,6 +20,7 @@ const Component = (props) => {
     // Get Firebase Database reference.
 
     let firepadRef = getSessionRef();
+    let firepadRefHistory = getSessionRef().child('history');
     // Create CodeMirror (with line numbers and the JavaScript mode).
     let codeMirror = CodeMirror(sel, {
       lineNumbers: true,
@@ -44,9 +45,13 @@ const Component = (props) => {
     firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
       defaultText: props.value,
     });
+
     firepad.on('ready', () => {
-      props.onChange && props.onChange(firepad.getText());
+      firepadRefHistory.on('value', (snapshot) => {
+        props.onChange && props.onChange(firepad.getText());
+      });
     });
+
     window.firepad = firepad;
   }
 
