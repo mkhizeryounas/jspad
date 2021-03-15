@@ -9,3 +9,6 @@
 .console tt {
   width: 100%;
 }
+.console pre {
+  border-left: none
+}

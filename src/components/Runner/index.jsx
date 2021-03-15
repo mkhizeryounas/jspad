@@ -26,7 +26,9 @@ const Component = (props) => {
       console.log = function () {
         response.push(
           [...arguments]
-            .map((e) => (typeof e === 'object' ? JSON.stringify(e) : e))
+            .map((e) =>
+              typeof e === 'object' ? JSON.stringify(e, null, 2) : e
+            )
             .join(' ')
         );
       };

@@ -34,16 +34,19 @@ const Component = (props) => {
                 </code>
               )}
             </p>
-            {output.stdout?.length ? (
-              output.stdout.map((e, i) => (
-                <span key={e + '-' + i}>
-                  {typeof e === 'object' ? JSON.stringify(e) : e}
-                  <br />
-                </span>
-              ))
-            ) : (
-              <></>
-            )}
+            <pre style={{ color: '#f2f2f2' }}>
+              {output.stdout?.length ? (
+                output.stdout.map((e, i) => (
+                  <span key={e + '-' + i}>
+                    {e}
+                    <br />
+                  </span>
+                ))
+              ) : (
+                <></>
+              )}
+            </pre>
+            <hr />
           </div>
         ) : (
           <></>
