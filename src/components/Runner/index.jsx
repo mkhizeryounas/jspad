@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import './style.css';
+import copy from 'copy-to-clipboard';
+import { useToasts } from 'react-toast-notifications';
 
 const fn = Function;
 
 const Component = (props) => {
   const { script = '', language = 'nodejs' } = props;
   const [isLoading, setIsLoading] = useState(false);
+  const { addToast } = useToasts();
 
   const formatDate = (d) => {
     return d.toString();
@@ -16,6 +19,7 @@ const Component = (props) => {
     props.onOutput && props.onOutput(null);
     await new Promise((resolve) => setTimeout(resolve, 500));
     let output = { hasError: false, date: formatDate(new Date()) };
+
     try {
       const response = [];
       console.oldLog = console.log;
@@ -56,7 +60,19 @@ const Component = (props) => {
             </>
           )}
         </button>
+        <button
+          className='btn btn-secondary ml-2'
+          onClick={() => {
+            copy(window.location.href);
+            addToast('Copied to clipboard', {
+              appearance: 'success',
+            });
+          }}
+        >
+          <i className='fa fa-share'></i>
+        </button>
       </div>
+      <div className='col'></div>
 
       <div className='col-auto'>
         <tt className='text-light'>

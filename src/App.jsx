@@ -7,6 +7,7 @@ import Console from './components/Console';
 import Runner from './components/Runner';
 import Account from './components/Account';
 import { getSessionRef } from './utils/firebase';
+import { ToastProvider } from 'react-toast-notifications';
 
 import './App.css';
 import '@fortawesome/fontawesome-free/css/all.css';
@@ -29,26 +30,28 @@ const App = () => {
   });
 
   return (
-    <div className='App'>
-      <Split sizes={[60, 40]} gutterSize={5}>
-        <Codepad
-          value={script}
-          onChange={(value) => {
-            setScript(value);
-          }}
-        />
-        <div>
-          <Console output={output} />
-          <Runner
-            script={script}
-            onOutput={(value) => {
-              fb.set(value);
+    <ToastProvider autoDismiss autoDismissTimeout={6000}>
+      <div className='App'>
+        <Split sizes={[60, 40]} gutterSize={5}>
+          <Codepad
+            value={script}
+            onChange={(value) => {
+              setScript(value);
             }}
           />
-        </div>
-      </Split>
-      <Account />
-    </div>
+          <div>
+            <Console output={output} />
+            <Runner
+              script={script}
+              onOutput={(value) => {
+                fb.set(value);
+              }}
+            />
+          </div>
+        </Split>
+        <Account />
+      </div>
+    </ToastProvider>
   );
 };
 
