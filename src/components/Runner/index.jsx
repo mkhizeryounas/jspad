@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './style.css';
 
+const fn = Function;
+
 const Component = (props) => {
   const { script = '', language = 'nodejs' } = props;
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +26,7 @@ const Component = (props) => {
             .join(' ')
         );
       };
-      new Function(script)();
+      new fn(script)();
       output['stdout'] = response;
     } catch (err) {
       output['stdout'] = [err.message || err];

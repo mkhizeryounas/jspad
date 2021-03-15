@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import ActiveUsers from '../ActiveUsers/index.jsx';
 import './style.css';
 
@@ -21,7 +20,7 @@ const Component = (props) => {
           <hr />
         </span>
         {output?.stdout ? (
-          <div>
+          <div className='pb-5'>
             <p>
               $~ Executed at <code>{output?.date}</code> with{' '}
               {!output.hasError ? (
@@ -36,9 +35,10 @@ const Component = (props) => {
               )}
             </p>
             {output.stdout.map((e, i) => (
-              <p key={e + '-' + i}>
+              <span key={e + '-' + i}>
                 {typeof e === 'object' ? JSON.stringify(e) : e}
-              </p>
+                <br />
+              </span>
             ))}
           </div>
         ) : (
