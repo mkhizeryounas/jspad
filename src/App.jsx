@@ -14,7 +14,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 const App = () => {
   const [script, setScript] = useState(
-    '// JavaScript Editing with Pushgun!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}\ngo();'
+    '// JavaScript Editing with JSPad!\nfunction go() {\n  var message = "Hello, world.";\n  console.log(message);\n}\ngo();'
   );
   const [output, setOutput] = useState(null);
 
