@@ -46,6 +46,7 @@ const Component = () => {
                     addToast('Please enter your full name', {
                       appearance: 'error',
                     });
+                    return;
                   }
                   setModal(false);
                   setLsName(name);
