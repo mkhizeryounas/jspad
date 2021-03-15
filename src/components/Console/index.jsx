@@ -8,7 +8,7 @@ const Component = (props) => {
   return (
     <div className={`console col ${className}`}>
       <tt>
-        <h5>Terminal</h5>
+        <h5>Activity Panal</h5>
         <hr />
         <ActiveUsers />
 

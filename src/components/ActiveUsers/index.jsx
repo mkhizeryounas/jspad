@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getSessionRef } from '../../utils/firebase';
-import { removeName } from '../../utils/localstorage';
+import { removeName, getName } from '../../utils/localstorage';
 
 import './style.css';
 
@@ -33,7 +33,7 @@ const Component = (props) => {
               window.location.reload();
             }}
           >
-            <i className='fa fa-edit fa-xs'></i> Edit username
+            <i className='fa fa-edit fa-xs'></i> {getName()}
           </a>
         </div>
       </div>
