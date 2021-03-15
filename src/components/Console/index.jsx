@@ -19,7 +19,7 @@ const Component = (props) => {
           <span>----------------------</span>
           <hr />
         </span>
-        {output?.stdout ? (
+        {output ? (
           <div className='pb-5'>
             <p>
               $~ Executed at <code>{output?.date}</code> with{' '}
@@ -34,12 +34,16 @@ const Component = (props) => {
                 </code>
               )}
             </p>
-            {output.stdout.map((e, i) => (
-              <span key={e + '-' + i}>
-                {typeof e === 'object' ? JSON.stringify(e) : e}
-                <br />
-              </span>
-            ))}
+            {output.stdout?.length ? (
+              output.stdout.map((e, i) => (
+                <span key={e + '-' + i}>
+                  {typeof e === 'object' ? JSON.stringify(e) : e}
+                  <br />
+                </span>
+              ))
+            ) : (
+              <></>
+            )}
           </div>
         ) : (
           <></>
