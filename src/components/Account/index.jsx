@@ -8,11 +8,9 @@ const Component = () => {
   const [modal, setModal] = useState(!name);
   const { addToast } = useToasts();
 
-  useEffect(() => {
-    if (name) {
-      window.firepad.setUserId(name);
-    }
-  }, []);
+  if (name) {
+    window.firepad.setUserId(name);
+  }
 
   const toggle = () => setModal(!modal);
   return (
