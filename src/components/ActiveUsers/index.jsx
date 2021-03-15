@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getSessionRef } from '../../utils/firebase';
+import { removeName } from '../../utils/localstorage';
+
 import './style.css';
 
 const Component = (props) => {
@@ -18,8 +20,23 @@ const Component = (props) => {
 
   return (
     <div className='container mb-2'>
-      <strong className='mb-2 row '>Active Users</strong>
-
+      <div className='row'>
+        <div className='col'>
+          <strong className='mb-2 row'>Active Users</strong>
+        </div>
+        <div className='col-auto'>
+          <a
+            className='text-light edit-username-btn'
+            href={() => false}
+            onClick={() => {
+              removeName();
+              window.location.reload();
+            }}
+          >
+            <i className='fa fa-edit fa-xs'></i> Edit username
+          </a>
+        </div>
+      </div>
       {users ? (
         Object.entries(users).map(([key, value], index) => {
           return (

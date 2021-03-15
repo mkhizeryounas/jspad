@@ -9,3 +9,7 @@ export const setName = (name) => {
 export const getName = () => {
   return window.localStorage.getItem(genKey('name')) || '';
 };
+
+export const removeName = () => {
+  window.localStorage.removeItem(genKey('name'));
+};
