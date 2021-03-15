@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Button, Modal, ModalBody, InputGroup, Input } from 'reactstrap';
 import { setName as setLsName, getName } from '../../utils/localstorage';
+import { useToasts } from 'react-toast-notifications';
 
 const Component = () => {
   const [name, setName] = useState(getName());
   const [modal, setModal] = useState(!name);
+  const { addToast } = useToasts();
 
   useEffect(() => {
     if (name) {
@@ -40,6 +42,11 @@ const Component = () => {
                   borderRadius: 0,
                 }}
                 onClick={() => {
+                  if (!name) {
+                    addToast('Please enter your full name', {
+                      appearance: 'error',
+                    });
+                  }
                   setModal(false);
                   setLsName(name);
                   window.firepad.setUserId(name);
