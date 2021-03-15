@@ -62,6 +62,13 @@ const Component = (props) => {
             </>
           )}
         </button>
+        <a
+          className='btn btn-primary text-white ml-2 btn-sm'
+          href='/'
+          target='_blank'
+        >
+          <i className='fa fa-plus-circle'></i>
+        </a>
         <button
           className='btn btn-secondary ml-2 btn-sm'
           onClick={() => {

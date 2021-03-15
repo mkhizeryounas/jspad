@@ -5,12 +5,15 @@ import { useToasts } from 'react-toast-notifications';
 
 const Component = () => {
   const [name, setName] = useState(getName());
+  const [initalSetup, setInitalSetup] = useState(false);
   const [modal, setModal] = useState(!name);
   const { addToast } = useToasts();
-
-  if (name) {
-    window.firepad.setUserId(name);
-  }
+  useEffect(() => {
+    if (name && !initalSetup) {
+      window.firepad.setUserId(name);
+    }
+    setInitalSetup(true);
+  }, [name, initalSetup]);
 
   const toggle = () => setModal(!modal);
   return (

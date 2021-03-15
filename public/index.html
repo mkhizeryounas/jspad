@@ -56,10 +56,9 @@
     <script>
       (() => {
         const config = {
-          apiKey: 'AIzaSyA9z7z04UB5RdbP6ipccEgg4y59evMm1nQ',
-          authDomain: 'codeshare-interviews.firebaseapp.com',
-          databaseURL:
-            'https://codeshare-interviews-default-rtdb.firebaseio.com/',
+          apiKey: '%REACT_APP_FIREBASE_API_KEY%',
+          authDomain: '%REACT_APP_FIREBASE_AUTH_DOMAIN%',
+          databaseURL: '%REACT_APP_FIREBASE_DATABASE_URL%',
         };
         firebase.initializeApp(config);
       })();
