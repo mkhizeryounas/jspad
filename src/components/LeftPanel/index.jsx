@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import Split from 'react-split';
 import Codepad from '../Codepad';
 import Meet from '../Meet';

@@ -16,7 +16,7 @@ const Component = (props) => {
       init();
     }
     setAlreadyInit(true);
-  }, []);
+  }, [alreadyInit]);
 
   function init() {
     const sel = document.getElementById('firepad-container');
