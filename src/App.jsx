@@ -37,7 +37,7 @@ const App = () => {
     <ToastProvider autoDismiss autoDismissTimeout={6000}>
       <div className='App'>
         {userName ? (
-          <Split sizes={[60, 40]} gutterSize={5}>
+          <Split sizes={[70, 30]} gutterSize={5}>
             <LeftPanel
               script={script}
               setScript={(value) => {
