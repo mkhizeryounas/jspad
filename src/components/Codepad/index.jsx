@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { getSessionRef } from '../../utils/firebase';
 import './style.css';
-import Meet from '../Meet';
 
 const CodeMirror = window.CodeMirror;
 const Firepad = window.Firepad;
