@@ -1,3 +1,7 @@
+body {
+  background-color: #253337 !important;
+}
+
 .App div:nth-child(1) {
   display: flex;
 }
