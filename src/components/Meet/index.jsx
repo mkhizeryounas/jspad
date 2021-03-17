@@ -62,7 +62,8 @@ const Meet = (props) => {
       init();
     }
     setAlreadyInit(true);
-  }, []);
+  }, [alreadyInit]);
+
   return <div id='meet'></div>;
 };
 
