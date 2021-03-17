@@ -3,7 +3,7 @@ import { Button, Modal, ModalBody, InputGroup, Input } from 'reactstrap';
 import { setName as setLsName, getName } from '../../utils/localstorage';
 import { useToasts } from 'react-toast-notifications';
 
-const Component = () => {
+const Component = (props) => {
   const [name, setName] = useState(getName());
   const [initalSetup, setInitalSetup] = useState(false);
   const [modal, setModal] = useState(!name);
@@ -11,6 +11,7 @@ const Component = () => {
   useEffect(() => {
     if (name && !initalSetup) {
       window.firepad.setUserId(name);
+      props.handleUsernameChange && props.handleUsernameChange(name);
     }
     setInitalSetup(true);
   }, [name, initalSetup]);
@@ -51,7 +52,9 @@ const Component = () => {
                   }
                   setModal(false);
                   setLsName(name);
-                  window.firepad.setUserId(name);
+                  window.firepad && window.firepad.setUserId(name);
+                  props.handleUsernameChange &&
+                    props.handleUsernameChange(name);
                 }}
               >
                 Join!

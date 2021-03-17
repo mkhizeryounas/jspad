@@ -2,13 +2,15 @@
   display: flex;
 }
 
-.gutter-horizontal {
+.gutter-horizontal,
+.gutter-vertical {
   cursor: col-resize !important;
   background-color: #222;
   transition: 0.5s;
 }
 
-.gutter-horizontal:hover {
+.gutter-horizontal:hover,
+.gutter-vertical:hover {
   background-color: #eee;
   transition: 0.5s;
 }

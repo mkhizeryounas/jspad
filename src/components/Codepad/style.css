@@ -1,3 +1,7 @@
+@import 'codemirror/lib/codemirror.css';
+@import 'codemirror/theme/material.css';
+@import 'codemirror/addon/hint/show-hint';
+
 .powered-by-firepad {
   display: none;
 }
@@ -7,9 +11,9 @@
   height: 100%;
 }
 
-@import 'codemirror/lib/codemirror.css';
-@import 'codemirror/theme/material.css';
-@import 'codemirror/addon/hint/show-hint';
+.codepad {
+  display: block !important;
+}
 
 .react-codemirror2,
 .CodeMirror {

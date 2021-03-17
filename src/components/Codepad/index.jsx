@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getSessionRef } from '../../utils/firebase';
 import './style.css';
+import Meet from '../Meet';
 
 const CodeMirror = window.CodeMirror;
 const Firepad = window.Firepad;
@@ -8,11 +9,15 @@ const Firepad = window.Firepad;
 const Component = (props) => {
   const { className = '' } = props;
   const firepadDivRef = useRef();
+  const [alreadyInit, setAlreadyInit] = useState(false);
   let firepad;
 
   useEffect(() => {
-    init();
-  });
+    if (!alreadyInit) {
+      init();
+    }
+    setAlreadyInit(true);
+  }, []);
 
   function init() {
     const sel = document.getElementById('firepad-container');
