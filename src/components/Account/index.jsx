@@ -8,13 +8,14 @@ const Component = (props) => {
   const [initalSetup, setInitalSetup] = useState(false);
   const [modal, setModal] = useState(!name);
   const { addToast } = useToasts();
+  const { handleUsernameChange = null } = props;
   useEffect(() => {
     if (name && !initalSetup) {
       window.firepad.setUserId(name);
-      props.handleUsernameChange && props.handleUsernameChange(name);
+      handleUsernameChange && handleUsernameChange(name);
     }
     setInitalSetup(true);
-  }, [name, initalSetup]);
+  }, [name, initalSetup, handleUsernameChange]);
 
   const toggle = () => setModal(!modal);
   return (
@@ -53,8 +54,7 @@ const Component = (props) => {
                   setModal(false);
                   setLsName(name);
                   window.firepad && window.firepad.setUserId(name);
-                  props.handleUsernameChange &&
-                    props.handleUsernameChange(name);
+                  handleUsernameChange && handleUsernameChange(name);
                 }}
               >
                 Join!
