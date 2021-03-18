@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/eca63ae1-80d8-459b-851d-000048fe7e69/deploy-status)](https://app.netlify.com/sites/jspad/deploys)
 
-JSPad is a simple collaborative coding envoinment for javascript for code sharing & coding assesments.
+JSPad is a simple collaborative coding environment for javascript for code sharing & coding assessments.
 
 ### Getting started
 
