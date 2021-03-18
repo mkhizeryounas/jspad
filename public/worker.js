@@ -23,7 +23,7 @@ self.addEventListener(
       new fn(payload.data)();
       output['stdout'] = response;
     } catch (err) {
-      output['stdout'] = [err.message || err];
+      output['stdout'] = [err.message ? err.toString() : err];
       output['hasError'] = true;
     }
     console.log = console.oldLog;
