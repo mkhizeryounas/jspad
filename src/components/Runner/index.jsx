@@ -3,44 +3,50 @@ import './style.css';
 import copy from 'copy-to-clipboard';
 import { useToasts } from 'react-toast-notifications';
 
-const fn = Function;
-
 const Component = (props) => {
   const { script = '', language = 'nodejs' } = props;
   const [isLoading, setIsLoading] = useState(false);
   const { addToast } = useToasts();
 
-  const formatDate = (d) => {
-    return d.toString();
+  const callCallbak = (res) => {
+    props.onOutput && props.onOutput(res);
+    setIsLoading(false);
   };
 
   const executeCode = async ({ script, language }) => {
     setIsLoading(true);
     props.onOutput && props.onOutput(null);
-    let output = { hasError: false, date: formatDate(new Date()) };
+
+    const worker = new Worker(process.env.PUBLIC_URL + '/worker.js');
+
     setTimeout(() => {
-      try {
-        const response = [];
-        console.oldLog = console.log;
-        console.log = function () {
-          response.push(
-            [...arguments]
-              .map((e) =>
-                typeof e === 'object' ? JSON.stringify(e, null, 2) : e
-              )
-              .join(' ')
-          );
-        };
-        new fn(script)();
-        output['stdout'] = response;
-      } catch (err) {
-        output['stdout'] = [err.message || err];
-        output['hasError'] = true;
-      }
-      props.onOutput && props.onOutput(output);
-      console.log = console.oldLog;
-      console.log(output);
-      setIsLoading(false);
+      let res = null;
+      worker.postMessage(script);
+
+      // handle output
+      worker.addEventListener('message', function (e) {
+        console.log('Message from Worker: ', e.data);
+        res = e.data;
+        callCallbak(res);
+      });
+
+      // handle timeouts
+      setTimeout(() => {
+        worker.terminate();
+        if (!res) {
+          const timeoutMsg = 'Timeout reached before any output';
+          res = {
+            date: new Date().toString(),
+            hasError: true,
+            stdout: [timeoutMsg],
+          };
+
+          addToast(timeoutMsg, {
+            appearance: 'error',
+          });
+          callCallbak(res);
+        }
+      }, 5 * 1000);
     }, 500);
   };
   return (
@@ -73,9 +79,6 @@ const Component = (props) => {
           className='btn btn-secondary ml-2 btn-sm'
           onClick={() => {
             copy(window.location.href);
-            addToast('Copied to clipboard', {
-              appearance: 'success',
-            });
           }}
         >
           <i className='fa fa-share'></i>

@@ -25,16 +25,15 @@ const Component = (props) => {
           <strong className='mb-2 row'>Active Users</strong>
         </div>
         <div className='col-auto'>
-          <a
+          <span
             className='text-light edit-username-btn'
-            href={() => false}
             onClick={() => {
               removeName();
               window.location.reload();
             }}
           >
             <i className='fa fa-edit fa-xs'></i> {getName()}
-          </a>
+          </span>
         </div>
       </div>
       {users ? (
