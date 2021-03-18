@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './style.css';
 import copy from 'copy-to-clipboard';
 import { useToasts } from 'react-toast-notifications';
+import { PUBLIC_URL } from '../../utils/config';
 
 const Component = (props) => {
   const { script = '', language = 'nodejs' } = props;
@@ -17,7 +18,7 @@ const Component = (props) => {
     setIsLoading(true);
     props.onOutput && props.onOutput(null);
 
-    const worker = new Worker(process.env.PUBLIC_URL + '/worker.js');
+    const worker = new Worker(PUBLIC_URL + '/worker.js');
 
     setTimeout(() => {
       let res = null;
