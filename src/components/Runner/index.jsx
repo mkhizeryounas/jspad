@@ -17,31 +17,31 @@ const Component = (props) => {
   const executeCode = async ({ script, language }) => {
     setIsLoading(true);
     props.onOutput && props.onOutput(null);
-    await new Promise((resolve) => setTimeout(resolve, 500));
     let output = { hasError: false, date: formatDate(new Date()) };
-
-    try {
-      const response = [];
-      console.oldLog = console.log;
-      console.log = function () {
-        response.push(
-          [...arguments]
-            .map((e) =>
-              typeof e === 'object' ? JSON.stringify(e, null, 2) : e
-            )
-            .join(' ')
-        );
-      };
-      new fn(script)();
-      output['stdout'] = response;
-    } catch (err) {
-      output['stdout'] = [err.message || err];
-      output['hasError'] = true;
-    }
-    props.onOutput && props.onOutput(output);
-    console.log = console.oldLog;
-    console.log(output);
-    setIsLoading(false);
+    setTimeout(() => {
+      try {
+        const response = [];
+        console.oldLog = console.log;
+        console.log = function () {
+          response.push(
+            [...arguments]
+              .map((e) =>
+                typeof e === 'object' ? JSON.stringify(e, null, 2) : e
+              )
+              .join(' ')
+          );
+        };
+        new fn(script)();
+        output['stdout'] = response;
+      } catch (err) {
+        output['stdout'] = [err.message || err];
+        output['hasError'] = true;
+      }
+      props.onOutput && props.onOutput(output);
+      console.log = console.oldLog;
+      console.log(output);
+      setIsLoading(false);
+    }, 500);
   };
   return (
     <div className='row runner'>
