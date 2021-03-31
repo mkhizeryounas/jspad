@@ -11,7 +11,6 @@ const Component = (props) => {
         <h5>Activity Panel</h5>
         <hr />
         <ActiveUsers />
-
         <hr />
         <span className='text-muted'>
           This is a real bash shell. <br />
