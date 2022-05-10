@@ -1,6 +1,6 @@
-import Split from 'react-split';
+// import Split from 'react-split';
 import Codepad from '../Codepad';
-import Meet from '../Meet';
+// import Meet from '../Meet';
 
 const Component = (props) => {
   return (
