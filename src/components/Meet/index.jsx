@@ -62,6 +62,7 @@ const Meet = (props) => {
       init();
     }
     setAlreadyInit(true);
+    // eslint-disable-next-line
   }, [alreadyInit]);
 
   return <div id='meet'></div>;

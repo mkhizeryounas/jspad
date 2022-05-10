@@ -16,6 +16,7 @@ const Component = (props) => {
       init();
     }
     setAlreadyInit(true);
+    // eslint-disable-next-line
   }, [alreadyInit]);
 
   function init() {
