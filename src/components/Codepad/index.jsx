@@ -61,7 +61,7 @@ const Component = (props) => {
   }
 
   return (
-    <div className={`codepad  ${className}`}>
+    <div className={`codepad  ${className}`} style={props.style || {}}>
       <div ref={firepadDivRef} id='firepad-container'></div>
     </div>
   );
