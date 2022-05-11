@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import './style.css';
 import copy from 'copy-to-clipboard';
-// import { useToasts } from 'react-toast-notifications';
+import { useToasts } from 'react-toast-notifications';
 // import { PUBLIC_URL } from '../../utils/config';
 import axios from 'axios';
 
 const Component = (props) => {
   const { script = '', language = 'javascript' } = props;
   const [isLoading, setIsLoading] = useState(false);
-  // const { addToast } = useToasts();
+  const { addToast } = useToasts();
 
   const callCallbak = (res) => {
     setIsLoading(false);
@@ -111,6 +111,9 @@ const Component = (props) => {
         <button
           className='btn btn-secondary ml-2 btn-sm'
           onClick={() => {
+            addToast('Copied to clipboard', {
+              appearance: 'success',
+            });
             copy(window.location.href);
           }}
         >
